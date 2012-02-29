@@ -15,11 +15,12 @@ module Barista
           inner         = Barista::Compiler.compile(text)
         end
         output = []
-        output << "<script type=#{options[:attr_wrapper]}#{content_type(type)}#{options[:attr_wrapper]}>"
-        output << "  #{cdata_wrapper % '<![CDATA['}"
+        # We need blank coffeescript output for our use-case
+        #output << "<script type=#{options[:attr_wrapper]}#{content_type(type)}#{options[:attr_wrapper]}>"
+        #output << "  #{cdata_wrapper % '<![CDATA['}"
         output << "  #{inner}".rstrip.gsub("\n", "\n  ")
-        output << "  #{cdata_wrapper % ']]>'}"
-        output << "</script>"
+        #output << "  #{cdata_wrapper % ']]>'}"
+        #output << "</script>"
         output.join("\n")
       end
      
